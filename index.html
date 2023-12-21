@@ -9,6 +9,28 @@
     <script src="script.js"></script>
 </head>
 <body>
-    
+    <section>
+        <div class="formRegion">
+            <h1>TodoInput</h1>
+            <form method="post">
+                <div class="input-container">
+                    <i class="fa-solid fa-book"></i>
+                    <input id="plac" type="text" placeholder="New Todo" required oninput="validateInput(this)">    
+                </div>  
+                <button type="submit">Add new task</button>
+            </form>
+        </div>
+        <div>
+            <h1>TodoList</h1>
+            <div class="buttonRegion">
+                <button type="submit">All</button>
+                <button type="submit">Done</button>
+                <button type="submit">Todo</button>
+            </div>    
+        </div>
+        <div class="ToDoListRegion">
+            <div><p>Learn React JS basies</p><div class="icons"><input  type="checkbox"><i class="fa-solid fa-pen"></i><i class="fas fa-trash"></i></div></div>
+        </div>
+    </section>    
 </body>
 </html>
