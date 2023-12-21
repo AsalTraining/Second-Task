@@ -1,0 +1,105 @@
+*{
+    font-family: 'Open Sans', sans-serif;
+    font-size: large;
+}
+section{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+h1{
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 4vh;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: rgb(208, 206, 206);
+    width: 70vw;
+    padding: 4vh 1vw;
+}
+.input-container {
+    display: flex;
+    width:65vw;
+    margin-bottom: 15px;
+}
+form input{
+    width:65vw ; 
+}
+.input-container .fa-solid{
+    border-style: solid;
+    border-color: #19A3BA;
+    color: white;
+    background-color: #19A3BA;
+    padding: 8px;
+}
+#plac::placeholder {
+    padding-left: 10px;
+}
+form button {
+    width: 65vw;
+    padding: 8px;
+    color: white;
+    background-color: #19A3BA;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+form button:hover{
+    background-color: #2f8a9a;
+}
+.buttonRegion{
+    display: flex;
+    justify-content: space-between;
+    width: 72vw;
+}
+.buttonRegion button{
+    width: 22vw;
+    padding: 8px;
+    color: white;
+    background-color: #19A3BA;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.buttonRegion button:hover{
+    background-color: #2f8a9a;
+    width: 12vw;
+}
+/*************************************************************/
+.icons{
+    display: inline-block;
+    
+}
+p{
+    width: 63vw;
+    display: inline-block;
+}
+.ToDoListRegion{
+    width: 72vw;
+    margin-top: 10vh;   
+}
+.icons .fa-solid,.fas{
+    margin: 0 10px;
+}
+
+.ToDoListRegion > div{
+    border-style: solid;
+    border-color: rgb(208, 206, 206);
+    padding: 5px 15px;
+}
+input[type="checkbox"] {
+    height: 15px;
+    width: 20px;
+}
+.icons input{
+    accent-color: white;
+}
+  
+
+
