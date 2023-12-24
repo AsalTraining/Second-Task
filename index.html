@@ -6,7 +6,6 @@
     <title>ToDoList</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/e8f65d6c9a.js" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
 </head>
 <body>
     <section>
@@ -17,7 +16,7 @@
                     <i class="fa-solid fa-book"></i>
                     <input id="plac" type="text" placeholder="New Todo" required oninput="validateInput(this)">    
                 </div>  
-                <button type="submit">Add new task</button>
+                <button id="add" type="submit">Add new task</button>
             </form>
         </div>
         <div>
@@ -28,9 +27,14 @@
                 <button type="submit">Todo</button>
             </div>    
         </div>
-        <div class="ToDoListRegion">
-            <div><p>Learn React JS basies</p><div class="icons"><input  type="checkbox"><i class="fa-solid fa-pen"></i><i class="fas fa-trash"></i></div></div>
+        <div class="ToDoListRegion" id="ToDoListRegion">
+           
         </div>
-    </section>    
+        <div class="deleteRegion">
+            <button type="submit" onclick="deleteDoneTasks()">Delete done tasks</button>
+            <button type="submit"  onclick="deleteAllTasks()">Delete all tasks</button>
+        </div>
+    </section>
+    <script src="script.js"></script>    
 </body>
 </html>

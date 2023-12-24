@@ -71,35 +71,56 @@ form button:hover{
     background-color: #2f8a9a;
     width: 12vw;
 }
-/*************************************************************/
-.icons{
-    display: inline-block;
-    
-}
-p{
-    width: 63vw;
-    display: inline-block;
-}
 .ToDoListRegion{
     width: 72vw;
     margin-top: 10vh;   
 }
-.icons .fa-solid,.fas{
-    margin: 0 10px;
-}
-
 .ToDoListRegion > div{
     border-style: solid;
-    border-color: rgb(208, 206, 206);
+    border-color: rgb(233, 228, 228);
     padding: 5px 15px;
+}
+p{
+    width: 60vw;
+    display: inline-block;
+}
+.icons{
+    display: inline-block;  
 }
 input[type="checkbox"] {
     height: 15px;
     width: 20px;
-}
-.icons input{
     accent-color: white;
 }
-  
+.fa-solid{
+    color : #F6C40B;
+    margin: 0 10px;
+}
+.fas{
+    color: #e01f39;
+    margin: 0 10px;
+}
+.deleteRegion{
+    display: flex;
+    justify-content: space-between;
+    width: 72vw;
+    margin-top: 5vh;
+}
+.deleteRegion button{
+    width: 35vw;
+    padding: 8px;
+    color: white;
+    background-color: #e01f39;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.deleteRegion button:hover{
+    background-color: #e4475c;
+    width: 12vw;
+}
+    
+
+
 
 
