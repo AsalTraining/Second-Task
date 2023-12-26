@@ -19,12 +19,18 @@
                 <button id="add" type="submit">Add new task</button>
             </form>
         </div>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+              <span class="close">&times;</span>
+              <p id="popup-message"></p>
+            </div>
+          </div>
         <div>
             <h1>TodoList</h1>
             <div class="buttonRegion">
-                <button type="submit">All</button>
-                <button type="submit">Done</button>
-                <button type="submit">Todo</button>
+                <button type="submit" id='all-button' onclick="renderTasks()">All</button>
+                <button type="submit" onclick="displayCheckedTasks()">Done</button>
+                <button type="submit" onclick="displayUnCheckedTasks()">Todo</button>
             </div>    
         </div>
         <div class="ToDoListRegion" id="ToDoListRegion">
@@ -32,7 +38,7 @@
         </div>
         <div class="deleteRegion">
             <button type="submit" onclick="deleteDoneTasks()">Delete done tasks</button>
-            <button type="submit"  onclick="deleteAllTasks()">Delete all tasks</button>
+            <button type="submit" id="delete" onclick="deleteAllTasks()">Delete all tasks</button>
         </div>
     </section>
     <script src="script.js"></script>    
