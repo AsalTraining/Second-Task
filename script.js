@@ -54,6 +54,32 @@ function CheckedTasks() {
     }
   });
 }
+
+
+function del(button) {
+  const taskContainer = button.closest(".task-container");
+
+  if (taskContainer) {
+    taskContainer.remove();
+
+    // Update 'tasks' array and localStorage
+    const taskId = taskContainer.querySelector(".task-text").id;
+    const taskIndex = tasks.indexOf(taskId);
+
+    if (taskIndex !== -1) {
+      tasks.splice(taskIndex, 1);
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+  }
+}
+function edit(btn) {
+const taskname = btn.closest(".task-container").querySelector(".task-text");
+const newText = prompt('Enter the new text for the paragraph:');
+  if (newText !== null) {
+    taskname.innerText = newText;
+  }
+}
+let taskCount=0;
 function renderTasks() {
   taskList.innerHTML = "";
 
@@ -65,6 +91,9 @@ function renderTasks() {
     const taskParagraph = document.createElement("p");
     taskParagraph.textContent = task;
     taskParagraph.className = "task-text";
+
+    const taskId = "task" + (++taskCount);
+    taskParagraph.id = taskId;
     taskContainer.appendChild(taskParagraph);
 
     const iconsContainer = document.createElement("div");
@@ -78,22 +107,36 @@ function renderTasks() {
     });
     iconsContainer.appendChild(checkboxInput);
 
-    const editIcon = document.createElement("i");
-    editIcon.className = "fa-solid fa-pen";
-    iconsContainer.appendChild(editIcon);
-    editIcon.addEventListener('click', function() {
-      editTask(taskId);
-    });
-
-    const deleteIcon = document.createElement("i");
-    deleteIcon.className = "fas fa-trash";
-    iconsContainer.appendChild(deleteIcon);
-
+    const btn = document.createElement('button');
+    btn.style.border = 'none';
+    btn.style.padding = '0';   
+    btn.style.margin = '0';   
+    btn.style.backgroundColor="white";
+    const ic = document.createElement('i');
+    ic.className = 'fa-solid fa-pen';
+    btn.appendChild(ic);
+    iconsContainer.appendChild(btn);
     taskContainer.appendChild(iconsContainer);
     taskList.appendChild(taskContainer);
+    btn.onclick = function() {
+      edit(btn);
+    };
+    const button = document.createElement('button');
+    button.style.border = 'none';
+    button.style.padding = '0';   
+    button.style.margin = '0';   
+    button.style.backgroundColor="white";
+    const icon = document.createElement('i');
+    icon.className = 'fas fa-trash';
+    button.appendChild(icon);
+    iconsContainer.appendChild(button);
+    taskContainer.appendChild(iconsContainer);
+    taskList.appendChild(taskContainer);
+    button.onclick = function() {
+      del(button);
+    };
   });
 }
-
 function displayCheckedTasks() {
   const taskItems = document.querySelectorAll('#ToDoListRegion .task-container');
   taskItems.forEach(function(taskItem) {
@@ -124,6 +167,27 @@ function displayUnCheckedTasks() {
     }
   });
 }
+function displayTasks() {
+  const taskItems = document.querySelectorAll('#ToDoListRegion .task-container');
+  
+  taskItems.forEach(function(taskItem) {
+    const checkbox = taskItem.querySelector('.task-checkbox');
+    const taskName = taskItem.querySelector('.task-text');
+    
+    // Always show the task
+    taskItem.style.display = 'block';
+
+    if (checkbox.checked) {
+      taskName.style.textDecoration = 'none';
+      taskName.style.color = 'black';
+    } else {
+      taskName.style.textDecoration = 'none';
+      taskName.style.color = 'black';
+    }
+  });
+}
+
+
 
 function showPopup(message) {
   const popup = document.getElementById('popup');
@@ -168,6 +232,7 @@ if (closePopup) {
   closePopup.addEventListener('click', hidePopup);
 }
 function addTask() {
+
     const task = taskInput.value;
     if (task) {
         tasks.push(task);

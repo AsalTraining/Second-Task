@@ -16,7 +16,7 @@
                     <i class="fa-solid fa-book"></i>
                     <input id="plac" type="text" placeholder="New Todo" required oninput="validateInput(this)">    
                 </div>  
-                <button id="add" type="submit">Add new task</button>
+                <button id="add" type="submit" onclick="addTask()">Add new task</button>
             </form>
         </div>
         <div id="popup" class="popup">
@@ -28,7 +28,7 @@
         <div>
             <h1>TodoList</h1>
             <div class="buttonRegion">
-                <button type="submit" id='all-button' onclick="renderTasks()">All</button>
+                <button type="submit" id='all-button' onclick="displayTasks()">All</button>
                 <button type="submit" onclick="displayCheckedTasks()">Done</button>
                 <button type="submit" onclick="displayUnCheckedTasks()">Todo</button>
             </div>    
