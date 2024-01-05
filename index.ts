@@ -1,4 +1,4 @@
-//validate input
+//validate input//
 function validateInput(input: HTMLInputElement): void {
     var regex = /^[a-zA-Z0-9]*$/;
     var value = input.value;
