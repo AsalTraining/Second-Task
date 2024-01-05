@@ -11,13 +11,13 @@ function validateInput(input) {
 function showPopup(message) {
   const popup = document.getElementById('popup');
   const popupMessage = document.getElementById('popup-message');
-
-
   popupMessage.textContent = message;
-
- 
   popup.style.display = 'block';
-  setTimeout(hidePopup, 3000);
+  overlay.style.display = "block";
+  overlay.addEventListener("click", function() {
+    popup.style.display = "none";
+    overlay.style.display = "none";
+  });
 }
 
 function hidePopup() {
@@ -101,7 +101,7 @@ function renderTasks() {
     taskContainer.appendChild(iconsContainer);
     taskList.appendChild(taskContainer);
     button.onclick = function() {
-      del(button);
+      del(button,taskId);
     };
   });
 }
@@ -175,51 +175,54 @@ function CheckedTasks() {
   });
 }
 //icons
-function edit(btn) {
+function edit(btn,taskId) {
   const taskname = btn.closest(".task-container").querySelector(".task-text");
   const newText = prompt('Enter the new text for the paragraph:');
-    if (newText !== null) {
-      taskname.innerText = newText;
-      localStorage.setItem('task_', newText);
-    }
+  console.log(taskId-1);
+  if (newText !== null) {
+    tasks[taskId - 1] = newText;
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    taskname.innerText = newText;
   }
-function del(button)  {
+  }
+function del(button,taskId)  {
   const taskContainer = button.closest(".task-container");
-
+  if (confirm("Are you sure you want to delete this item?")) {
   if (taskContainer) {
     taskContainer.remove();
-
-    const taskId = taskContainer.querySelector(".task-text").id;
-    const taskIndex = tasks.indexOf(taskId);
-
-    if (taskIndex !== -1) {
-      tasks.splice(taskIndex, 1);
-    }
-  }
+    tasks.splice(taskId-1, 1);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }}
+  showPopup('Task deleted successfully!');
 }
 //delete
 function deleteAllTasks() {
+  if (confirm("Are you sure you want to delete this item?")) {
   tasks = []; 
   localStorage.removeItem("tasks"); 
   renderTasks(); 
+  }
 }
 function deleteDoneTasks() {
-  const doneTasks = Array.from(document.querySelectorAll(".task-container"))
-    .filter(taskContainer => {
-      const checkboxInput = taskContainer.querySelector("input[type='checkbox']");
-      return checkboxInput.checked; 
+  if (confirm("Are you sure you want to delete this item?")) {
+    const doneTasks = Array.from(document.querySelectorAll(".task-container"))
+      .filter(taskContainer => {
+        const checkboxInput = taskContainer.querySelector("input[type='checkbox']");
+        return checkboxInput.checked; 
+      });
+  
+    doneTasks.forEach(doneTask => {
+      const taskText = doneTask.querySelector(".task-text").textContent;
+      const taskIndex = tasks.indexOf(taskText);
+      if (taskIndex !== -1) {
+        tasks.splice(taskIndex, 1); 
+      }
     });
-
-  doneTasks.forEach(doneTask => {
-    const taskText = doneTask.querySelector(".task-text").textContent;
-    const taskIndex = tasks.indexOf(taskText);
-    if (taskIndex !== -1) {
-      tasks.splice(taskIndex, 1); 
-    }
-  });
-
-  localStorage.setItem("tasks", JSON.stringify(tasks)); 
-  renderTasks(); 
+  
+    localStorage.setItem("tasks", JSON.stringify(tasks)); 
+    renderTasks();
+   }
+   showPopup('Task deleted successfully!');
 }
 const taskInput = document.getElementById("plac");
 const addTaskButton = document.getElementById("add");
